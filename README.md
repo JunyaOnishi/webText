@@ -5,7 +5,7 @@
 
 使い方
 ------
-- Download ZIPをクリックしてください。
+- [Download ZIP](https://github.com/JunyaOnishi/webText/archive/master.zip)をクリックしてください。
 - Gitの使用はGitの扱い方の学習の際に使用します。
 
 関連情報
@@ -15,10 +15,9 @@
 
 2. [ProGit](https://progit-ja.github.io/)
 
-#### 次回までに
-1. [Github](https://github.com/)に登録しておくこと
+3. [Github](https://github.com/)に登録しておくこと
 
-2. [Bitbucket](https://bitbucket.org/)に登録しておくこと
+4. [Bitbucket](https://bitbucket.org/)に登録しておくこと
 
 ライセンス
 ----------

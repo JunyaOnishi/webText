@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <!--文字コードをUTF-8に設定 -->
+    <meta charset="UTF-8">
+    <!--IEで最先端の描画モードを使用するように指定-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--スマホやPCなどで参照にするデバイスサイズを指定-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--HTMLドキュメントのタイトル-->
+    <title>サンプルページ</title>
+    <!--キーワードや説明-->
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <!--スタイルシート、ファビコンの指定-->
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <!--
+      下記は条件付きコメントと言って、
+      過去の遺物ですが、過去の遺物に対処するには便利な道具ですので
+      覚えておいて下さい
+    -->
+    <!-- [if gte IE8]>
+    <style>
+      *, *:before, *:after {
+        box-sizing: border-box;
+      }
+    </style>
+    <![endif]-->
+    <style>
+      pre {
+        background: #f0f0f0;
+        border-radius: .313em;
+        border: 2px solid #ccc;
+        color:  #000
+      }
+      .eighty-width {
+        width: 80%;
+        margin: 0 auto;
+      }
+      .inline {
+        width: 90%;
+        margin: 0 auto;
+        border: 1px dotted #000;
+      }
+      .hidden {
+        display: none;
+      }
+      table, th, td, caption {
+        border: 1px solid #000;
+      }
+      .img {
+        width: 50px;
+        height: auto;
+      }
+      .video {
+        max-width: 50%;
+        height: auto;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>第三回講習</h1>
+    <!--独立したコンテンツとして成り立つ場合は、articleを使用する -->
+    <nav id="nav">
+      <h2>学習目次</h2>
+      <ul class="float-nav">
+        <li><a href="#elementsec">セクショニング要素</a></li>
+        <li>
+          <a href="#elementgrouping">グループ化要素について</a>
+          <ul>
+            <li><a href="#elementhg">テーマの区切れ</a></li>
+            <li><a href="#elementpreandcode">整形済みテキストとソースコード</a></li>
+            <li><a href="#elementblockquote">引用</a></li>
+            <li><a href="#elementolist">順序リスト</a></li>
+            <li><a href="#elementulist">非順序リスト</a></li>
+            <li><a href="#elementdlist">記述リスト</a></li>
+            <li><a href="#elementdiv">一般的なコンテナ</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#elementtable">テーブル関連の要素</a>
+            <ul>
+              <li><a href="#normaltable">一般的なテーブルの構成</a></li>
+              <li><a href="#tbodytwotable">明示的にtbodyを分ける場合</a></li>
+            </ul>
+        </li>
+        <li><a href="#elementmedia">メディアの組み込み</a></li>
+        <li><a href="#elementsform">フォーム関連要素</a></li>
+      </ul>
+    </nav>
+    <hr class="clear">
+    <article id="elementsec">
+      <h2>セクショニング要素</h2>
+      <section>
+        <h3>セクショニング要素色々</h3>
+        <pre><code>
+          &lt;!--&lt;pre_と&lt;code>を使用するとき、インデントを整形してしまうと、表示系もおかしくなるので注意-->
+          &lt;!--今回は、HTMLテキストとしての構造を優先している-->
+
+          &lt;header>&lt;/header>
+
+          &lt;nav>&lt;/nav>
+
+          &lt;section>&lt;/section>
+
+          &lt;article>&lt;/article>
+
+          &lt;aside>&lt;/aside>
+
+          &lt;h1>&lt;/h1>~&lt;h6>&lt;/h6>
+
+          &lt;footer>&lt;/footer>
+
+          &lt;address>&lt;/address>
+        </code></pre>
+      </section>
+    </article>
+    <hr class="clear">
+    <article id="elementgrouping">
+      <h2>グループ化要素</h2>
+      <p> &lt;p>&lt;/p>は段落を示すときに使用するタグです。</p>
+      <section id="elementhg">
+        <h5>テーマの区切れ</h5>
+        <p> &lt;hr>は単独でテーマの区切れを意味するタグです。</p>
+        <pre>
+          <h6>サンプル</h6>
+          <hr class="eighty-width">
+          ※ここのコーディングは誤った手法ですが、わかりやすさのためにこうしています。
+        </pre>
+      </section>
+      <hr class="inline">
+      <section id="elementpreandcode">
+        <h5>整形済みテキスト＆コードの表示</h5>
+        &lt;pre>タグ、&lt;code>タグはもう使用していますが、中身が整形済みのテキストであることを示します。
+        <pre><code>
+          &lt;!-- これらはタグではなく、テキストとして扱われる -->
+          &lt;!DOCTYPE html>
+          &lt;html>
+            &lt;head>&lt;/head>
+            &lt;body>
+            &lt;/body>
+          &lt;/html>
+        </code></pre>
+      </section>
+      <hr class="inline">
+      <section id="elementblockquote">
+        <h5>引用の要素について</h5>
+        <p>引用には &lt;blockquote> &lt;/blockquote>タグ、もしくは、&lt;q>&lt;/q>を用います。<br>
+          &lt;blockquote>は、複数行に及ぶ引用、&lt;q>は一行以内に収まる(主に発言に対して使用する)引用に使用します。
+        </p>
+        <blockquote>
+          偶因狂疾成殊類　災患相仍不可逃<br>
+          今日爪牙誰敢敵　当時声跡共相高<br>
+          我為異物蓬茅下　君已乗※(「車＋召」、第3水準1-92-44)気勢豪<br>
+          此夕渓山対明月　不成長嘯但成※(「口＋皐」の「白」に代えて「自」、第4水準2-4-33)<br>
+          　時に、残月、光冷ひややかに、白露は地に滋しげく、樹間を渡る冷風は既に暁の近きを告げていた。人々は最早、事の奇異を忘れ、粛然として、この詩人の薄倖を嘆じた。李徴の声は再び続ける。
+        </blockquote>
+        <p>中島敦 <cite>山月記</cite><br>
+          <a href="http://www.aozora.gr.jp/cards/000119/files/624_14544.html">
+            <cite>http://www.aozora.gr.jp/cards/000119/files/624_14544.html</cite>
+          </a>
+        </p>
+        <q>我思う、ゆえに我あり</q>
+        <p>デカルト：<cite>方法序説</cite></p>
+      </section>
+      <hr class="inline">
+      <section id="elementolist">
+        <h5>順序リスト</h5>
+        <p>
+          順序リストは&lt;ol>&lt;/ol>を使用して、表現します。<br>
+          順番自体に意味がある場合に使用するリストです。
+        </p>
+        <section>
+          <h5>スーパーとかちの停車駅(釧路→帯広間:時系列順)</h5>
+            <ol>
+              <li>釧路</li>
+              <li>白糠</li>
+              <li>浦幌</li>
+              <li>池田</li>
+              <li>帯広</li>
+            </ol>
+        </section>
+      </section>
+      <hr class="inline">
+      <section id="elementulist">
+        <h5>非順序リスト</h5>
+        <p>
+          非順序リストは&lt;ul>&lt;/ul>を使用して、表現します。<br>
+          並び順には意味はなく、並び替えても意味の通る場合に使用するリストです。
+        </p>
+        <section>
+          <h5>わたしが住んだことのある都市</h5>
+         <ul>
+            <li>北海道帯広市</li>
+            <li>長野県長野市</li>
+            <li>東京都府中市</li>
+            <li>東京都新宿区</li>
+            <li>岩手県盛岡</li>
+          </ul>
+        </section>
+      </section>
+      <hr class="inline">
+      <section id="elementdlist">
+        <h5>記述リスト</h5>
+        <p>
+          記述リストは、レイアウト上でテーブル的な構造が必要なリストを作成する際に使用します。
+          名前と値に数値的な意味がある場合は、素直に&lt;table>&lt;/table>要素を使用しましょう
+        </p>
+        <section>
+          <h5>株式会社ティー・ワイ:第三回WEB講習</h5>
+         <dl>
+            <dt>タイトル</dt><dd>HTML5ハンズオン</dd>
+            <dt>講演者</dt><dd>JunyaOnishi</dd>
+            <dt>学習目次</dt>
+            <dd>グループ化要素</dd>
+            <dd>テキストに対する意味付け要素</dd>
+            <dd>組み込みコンテンツ要素</dd>
+            <dd>テーブルに関する要素</dd>
+            <dd>フォーム関連要素</dd>
+          </dl>
+        </section>
+      </section>
+      <hr class="inline">
+      <section id="elementdiv">
+        <h5>一般的なコンテナ要素</h5>
+        <p>&lt;div>&lt;/div>要素は特に何か意味があるわけではありませんが、グルーピングされていることを示すために使用されます</p>
+      </section>
+    </article>
+    <hr class="clear">
+    <article id="elementtable">
+      <h2>テーブル関連要素について</h2>
+      <section id="normaltable">
+        <h4>一般的なテーブルの構成</h4>
+        <table>
+          <caption>日本の男女別人口推移</caption>
+          <thead>
+            <tr>
+              <th>年</th>
+              <th>男性</th>
+              <th>女性</th>
+              <th>合計</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>平成12年</td>
+              <td>62,110,764人</td>
+              <td>64,815,079人</td>
+              <td>126,925,843人</td>
+            </tr>
+          </tbody>
+        </table>
+        <pre><code>
+          &lt;table>
+            &lt;caption>日本の男女別人口推移&lt;/caption>
+            &lt;thead>
+              &lt;tr>
+                &lt;th>年&lt;/th>
+                &lt;th>男性&lt;/th>
+                &lt;th>女性&lt;/th>
+                &lt;th>合計&lt;/th>
+              &lt;/tr>
+            &lt;/thead>
+            &lt;tbody>
+              &lt;tr>
+                &lt;td>平成12年&lt;/td>
+                &lt;td>62,110,764人&lt;/td>
+                &lt;td>64,815,079人&lt;/td>
+                &lt;td>126,925,843人&lt;/td>
+              &lt;/tr>
+            &lt;/tbody>
+          &lt;/table>
+        </code></pre>
+      </section>
+      <hr class="inline">
+      <section id="tbodytwotable">
+        <h4>tobodyが２つあり、明示的に区別しているタイプ</h4>
+        <table>
+          <caption>取扱商品</caption>
+          <thead>
+            <tr>
+              <th>サイズ</th>
+              <th>色</th>
+              <th>在庫</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr>
+              <td rowspan="2">L</td>
+              <td>赤</td>
+              <td>在庫あり</td>
+            </tr>
+            <tr>
+              <td>青</td>
+              <td>在庫あり</td>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr>
+              <td rowspan="3">M</td>
+              <td>赤</td>
+              <td>在庫切れ</td>
+            </tr>
+            <tr>
+              <td>青</td>
+              <td>在庫あり</td>
+            </tr>
+            <tr>
+              <td>黄</td>
+              <td>在庫切れ</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </article>
+    <article id="elementmedia">
+      <h2>メディアの組み込み</h2>
+      <section id="elementimg">
+        <h5>画像の埋め込み</h5>
+        <img class="img" src="./sample.png" alt="AmazonS3Bucket">
+        <h5>ベクター画像の埋め込み</h5>
+        <img class="img" src="./sample.svg" alt="AmazonS3Bucket">
+      </section>
+      <hr class="inline">
+      <section id="elementvideo">
+        <h5>動画の埋め込み</h5>
+        <video class="video" loop controls>
+          <source src="./sample.mp4">
+        </video>
+        <pre><code>
+          &lt;video class="video" autobuffer autoloop loop controls>
+            &lt;source src="./sample.mp4">
+          &lt;/video>
+        </code></pre>
+      </section>
+      <hr class="inline">
+      <section id="elementaudio">
+        <h5>音楽の埋め込み</h5>
+        <audio controls>
+          <source src="./sample.mp3">
+        </audio>
+      </section>
+    </article>
+    <hr class="clear">
+    <article id="elementsform">
+      <h2>フォーム関連要素</h2>
+      <p>
+        &lt;form>&lt;/form>タグはサーバーにユーザーの入力データを送信するためのタグです。
+      </p>
+      <form>
+        <p><label>ヒドゥン:<input type="hidden" name="hidden"></label></p>
+        <p><label>テキスト:<input type="text" name="name"></label></p>
+        <p><label>メールアドレス:<input type="email" name="email"></label></p>
+        <p><label>検索:<input type="search" name="search"></label></p>
+        <p><label>電話番号:<input type="tel" name="tel"></label></p>
+        <p><label>url:<input type="url" name="url"></label></p>
+        <p><label>パスワード:<input type="password" name="password"></label></p>
+        <p><label>日時:<input type="datetime" name="datetime"></label></p>
+        <p><label>色選択:<input type="color" name="color"></label></p>
+        <p><label>チェックボックス:<input type="checkbox" name="checkbox"></label></p>
+        <p><label>ラジオボタン:<!-- ここもわかりやすさ優先で誤った構文にしてます。label内にlabelを使用してはいけません-->
+          <label><input type="radio" name="radio">男性</label>
+          <label><input type="radio" name="radio">女性</label>
+        </label></p>
+        <p><label>ファイル:<input type="file" name="file"></label></p>
+        <p><label>サブミットボタン:<input type="submit" name="submit"></label></p>
+        <p><label>リセットボタン:<input type="reset" name="reset"></label></p>
+        <p><label>番号:
+          <input type="range" name="range" oninput="this.form.elements.op.value=this.value;">
+          <output name="op">50</output>
+        </label></p>
+        <p><label>セレクト:
+          <select name="select">
+            <option>Windows</option>
+            <option>Macintosh</option>
+            <option>Linux</option>
+          </select>
+        </label></p>
+        <p><label>セレクト(広域化＆グルーピング):<br>
+          <kbd>Ctrl</kbd>+<kbd>LC(左クリック)</kbd>で複数選択<br>
+          <select name="都道府県" size="15" multiple>
+            <optgroup label="北海道・東北">
+              <option value="北海道">北海道</option>
+              <option value="青森県">青森県</option>
+              <option value="秋田県">秋田県</option>
+              <option value="岩手県">岩手県</option>
+              <option value="山形県">山形県</option>
+              <option value="宮城県">宮城県</option>
+              <option value="福島県">福島県</option>
+            </optgroup>
+            <optgroup label="甲信越・北陸">
+              <option value="山梨県">山梨県</option>
+              <option value="長野県">長野県</option>
+              <option value="新潟県">新潟県</option>
+              <option value="富山県">富山県</option>
+              <option value="石川県">石川県</option>
+              <option value="福井県">福井県</option>
+            </optgroup>
+            <optgroup label="関東">
+              <option value="茨城県">茨城県</option>
+              <option value="栃木県">栃木県</option>
+              <option value="群馬県">群馬県</option>
+              <option value="埼玉県">埼玉県</option>
+              <option value="千葉県">千葉県</option>
+              <option value="東京都">東京都</option>
+              <option value="神奈川県">神奈川県</option>
+            </optgroup>
+            <optgroup label="東海">
+              <option value="愛知県">愛知県</option>
+              <option value="静岡県">静岡県</option>
+              <option value="岐阜県">岐阜県</option>
+              <option value="三重県">三重県</option>
+            </optgroup>
+            <optgroup label="関西">
+              <option value="大阪府">大阪府</option>
+              <option value="兵庫県">兵庫県</option>
+              <option value="京都府">京都府</option>
+              <option value="滋賀県">滋賀県</option>
+              <option value="奈良県">奈良県</option>
+              <option value="和歌山県">和歌山県</option>
+            </optgroup>
+            <optgroup label="中国">
+              <option value="岡山県">岡山県</option>
+              <option value="広島県">広島県</option>
+              <option value="鳥取県">鳥取県</option>
+              <option value="島根県">島根県</option>
+              <option value="山口県">山口県</option>
+            </optgroup>
+            <optgroup label="四国">
+              <option value="徳島県">徳島県</option>
+              <option value="香川県">香川県</option>
+              <option value="愛媛県">愛媛県</option>
+              <option value="高知県">高知県</option>
+            </optgroup>
+            <optgroup label="九州・沖縄">
+              <option value="福岡県">福岡県</option>
+              <option value="佐賀県">佐賀県</option>
+              <option value="長崎県">長崎県</option>
+              <option value="熊本県">熊本県</option>
+              <option value="大分県">大分県</option>
+              <option value="宮崎県">宮崎県</option>
+              <option value="鹿児島県">鹿児島県</option>
+              <option value="沖縄県">沖縄県</option>
+            </optgroup>
+          </select>
+        </label></p>
+        <p><label>テキストエリア:<textarea name="textarea"></textarea></label></p>
+        <p><label>暗号Keyの生成:<keygen name="key"></label></p>
+        <p><label>プログレスバー:<progress value="0.1" max="1"></progress></label>
+      </form>
+    </article>
+    <article id="elementfuture">
+      <h2>先進的なタグ</h2>
+      <section>
+        <h5>オンデマンド詳細情報</h5>
+        <details style="width:50%; border-radius:.313em; border:1px solid #000;padding:2em;">
+          <summary>処理中・・・<progress max="100" value="24"></progress> 24%</summary>
+          <p>100ページ中、25ページ目を処理しています...</p>
+        </details>
+      </section>
+    </article>
+    <footer class="hidden">
+      <h5 class="hidden">スクリプトフッター</h5>
+      <script class="hidden" type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+      <script class="hidden" type="text/javascript" src="http://blog.webcreativepark.net/sample/js/53/smoothScroll.js"></script>
+    </footer>
+  </body>
+</html>
+
